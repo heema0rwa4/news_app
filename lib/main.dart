@@ -17,17 +17,21 @@ void main()  async {
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CacheHelper.init();
+  bool? isDark = CacheHelper.getData(key: 'isDark');
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
+// final bool isDark ;
+// MyApp(this.isDark);
   @override
   Widget build(BuildContext context) {
 
     return BlocProvider(
 
-      create: (BuildContext context)=> AppCubit(),
+      create: (BuildContext context)=> AppCubit()..changeAppMode(
+
+      ),
       child: BlocConsumer<AppCubit,AppStates>(
         listener: (BuildContext context,  state) {  },
         builder: (BuildContext context, state) {

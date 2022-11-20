@@ -13,16 +13,22 @@ class AppCubit extends Cubit<AppStates> {
   ThemeMode AppMode = ThemeMode.light;
 
   void changeAppMode(){
+
     if(isDark){
       AppMode =ThemeMode.light;
     }
     if(!isDark){
       AppMode = ThemeMode.dark;
     }
+
+
     isDark = !isDark ;
-    CacheHelper.setData(key: 'isDark', value: isDark).then((value){
-      emit(ChangeAppModeState());
-    });
+      CacheHelper.setData(key: 'isDark', value: isDark).then((value){
+        emit(ChangeAppModeState());
+      });
+
+
+
   }
 }
 
